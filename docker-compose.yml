@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  mysql_dbms:
+    image: mysql/mysql-server
+    container_name: mysql_dbms
+    ports:
+      - "3306:3006"
+    environment:
+      MYSQL_ROOT_PASSWORD: my_password
+    networks:
+      calc_network:
+
+
+  web-calc:
+    image: kaiwolff/web-calculator
+    ports:
+      -"8080:5000"
+    container_name: web_calc
+
+
+  networks:
+    calc_network
